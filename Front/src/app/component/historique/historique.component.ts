@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 @Component({
   selector: 'app-historique',
@@ -7,9 +9,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoriqueComponent implements OnInit {
 
-  constructor() { }
+  History = [{"pseudo" : "none", "score" : "none", "date" : "none"}];
+  podium = [{"pseudo" : "none", "score" : "none", "date" : "none"}];
 
+  constructor(
+    private httpClient:HttpClient) { }
   ngOnInit(): void {
+    this.loadHistory()
+    this.Classement()
+  }
+
+  loadHistory() {
+    this.httpClient.get<string>('http://localhost:8080/History').subscribe((data) => {
+
+      // @ts-ignore
+      this.History = data
+
+    });
+  }
+
+  Classement() {
+    this.httpClient.get<string>('http://localhost:8080/Classement').subscribe((data) => {
+
+      // @ts-ignore
+      this.podium = data
+
+    });
   }
 
 }

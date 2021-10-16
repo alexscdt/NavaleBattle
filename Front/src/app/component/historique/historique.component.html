@@ -1,1 +1,37 @@
-<p>historique works!</p>
+<section>
+  <div class="historique">
+
+    <h2>HISTORIQUE</h2>
+
+    <div class="tableau">
+      <a>Pseudo</a>
+      <a>Tours</a>
+      <a>Date</a>
+    </div>
+
+    <div class="tableau" *ngFor="let History of History; let index = index">
+      <a>{{History.pseudo}}</a>
+      <a>{{History.score}}</a>
+      <a>{{History.date}}</a>
+    </div>
+
+  </div>
+
+  <div class="Classement">
+
+    <h2>CLASSEMENT</h2>
+
+    <div class="tableau">
+      <a>Pseudo</a>
+      <a>Tours</a>
+      <a>Date</a>
+    </div>
+
+    <div class="tableau" *ngFor="let Classement of podium; let index = index">
+      <a>{{Classement.pseudo}}</a>
+      <a>{{Classement.score}}</a>
+      <a>{{Classement.date}}</a>
+    </div>
+
+  </div>
+</section>

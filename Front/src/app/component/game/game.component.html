@@ -1,1 +1,29 @@
-<p>game works!</p>
+<section>
+
+
+  <div class="game" *ngIf="!win">
+
+    <div  class="tray" *ngFor="let row of row, let indexR = index" >
+      <div class="row">
+        <a>{{row}}</a>
+      </div>
+      <div class="column" *ngFor="let Column of column, let indexC = index">
+        <div [id]="row + Column" class="column1" (click)="clickTray(row + Column)">
+          <a *ngIf="indexR == 0">{{Column}}</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="game" *ngIf="win">
+    <h1>VOUS AVEZ GAGNÉ</h1>
+    <button (click)="save()">Sauvegarder son score</button>
+  </div>
+
+  <div class="other">
+    <button (click)="clickPlay()">PLAY</button>
+    <a>tours numéro : {{coup}}</a>
+  </div>
+
+</section>
